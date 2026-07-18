@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 
 from .ai_service import AIService
-from .schemas import AskRequest
+from .schemas import AskRequest, ExplainRequest
 
 
 app = FastAPI(
@@ -55,4 +55,28 @@ def ask_question(request: AskRequest):
         raise HTTPException(
             status_code=502,
             detail="Gemini could not generate an answer."
+        ) from error
+
+
+@app.post("/api/explain")
+def explain_concept(request: ExplainRequest):
+    if ai_service is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Gemini is not configured. Check the .env file."
+        )
+
+    try:
+        return ai_service.explain_concept(
+            concept=request.concept,
+            level=request.level,
+            style=request.style
+        )
+
+    except Exception as error:
+        print(f"Gemini error: {error}")
+
+        raise HTTPException(
+            status_code=502,
+            detail="Gemini could not explain the concept."
         ) from error

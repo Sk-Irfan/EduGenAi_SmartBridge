@@ -3,12 +3,14 @@ import os
 from dotenv import load_dotenv
 from google import genai
 
+
 load_dotenv()
 
 
 class AIService:
     def __init__(self):
         api_key = os.getenv("GEMINI_API_KEY")
+
         model = os.getenv(
             "GEMINI_MODEL",
             "gemini-3.5-flash"
@@ -32,19 +34,19 @@ class AIService:
         subject: str | None = None
     ) -> dict:
         prompt = f"""
-You are EduGenie, an educational assistant.
+You are EduGenie, a safe and accurate educational assistant.
 
-Answer the learner's question clearly and accurately.
+Answer the learner's question clearly.
 
+Question: {question}
 Learner level: {level}
 Subject: {subject or "General education"}
-Question: {question}
 
 Rules:
-- Use language appropriate for the learner's level.
 - Give a direct answer first.
+- Use language suitable for the learner's level.
 - Add a short educational explanation.
-- Include one simple example when useful.
+- Include a simple example when useful.
 - Do not invent facts.
 """
 
@@ -56,5 +58,40 @@ Rules:
         return {
             "question": question,
             "level": level,
-            "answer": response.text
+            "answer": response.text or ""
+        }
+
+    def explain_concept(
+        self,
+        concept: str,
+        level: str,
+        style: str
+    ) -> dict:
+        prompt = f"""
+You are EduGenie, a safe and accurate educational assistant.
+
+Explain the following concept clearly.
+
+Concept: {concept}
+Learner level: {level}
+Preferred style: {style}
+
+Rules:
+- Start with a simple definition.
+- Use easy educational language.
+- Give a helpful analogy.
+- Include one example.
+- End with important key points.
+- Do not invent facts.
+"""
+
+        response = self.client.models.generate_content(
+            model=self.model,
+            contents=prompt
+        )
+
+        return {
+            "concept": concept,
+            "level": level,
+            "explanation": response.text or ""
         }
