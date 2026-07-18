@@ -170,3 +170,43 @@ Rules:
             "summary_length": length,
             "summary": response.text or ""
         }
+
+    def create_roadmap(
+        self,
+        topic: str,
+        level: str,
+        hours_per_week: int,
+        goal: str
+    ) -> dict:
+        prompt = f"""
+You are EduGenie, a personalized learning advisor.
+
+Create a structured learning roadmap.
+
+Topic: {topic}
+Current level: {level}
+Available study time: {hours_per_week} hours per week
+Learning goal: {goal}
+
+Rules:
+- Divide the roadmap into beginner, intermediate, and advanced stages.
+- Include topics for every stage.
+- Include practice activities.
+- Include a realistic weekly study plan.
+- Recommend revision and project work.
+- Use clear and encouraging language.
+- Do not invent specific external resources.
+"""
+
+        response = self.client.models.generate_content(
+            model=self.model,
+            contents=prompt
+        )
+
+        return {
+            "topic": topic,
+            "level": level,
+            "hours_per_week": hours_per_week,
+            "goal": goal,
+            "roadmap": response.text or ""
+        }

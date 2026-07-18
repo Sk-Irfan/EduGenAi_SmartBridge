@@ -5,6 +5,7 @@ from .schemas import (
     AskRequest,
     ExplainRequest,
     QuizRequest,
+    RoadmapRequest,
     SummarizeRequest
 )
 
@@ -132,4 +133,29 @@ def summarize_text(request: SummarizeRequest):
         raise HTTPException(
             status_code=502,
             detail="Gemini could not summarize the text."
+        ) from error
+
+
+@app.post("/api/roadmap")
+def create_learning_roadmap(request: RoadmapRequest):
+    if ai_service is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Gemini is not configured. Check the .env file."
+        )
+
+    try:
+        return ai_service.create_roadmap(
+            topic=request.topic,
+            level=request.level,
+            hours_per_week=request.hours_per_week,
+            goal=request.goal
+        )
+
+    except Exception as error:
+        print(f"Gemini error: {error}")
+
+        raise HTTPException(
+            status_code=502,
+            detail="Gemini could not create the roadmap."
         ) from error

@@ -68,3 +68,26 @@ class SummarizeRequest(BaseModel):
         default="medium",
         max_length=30
     )
+
+
+class RoadmapRequest(BaseModel):
+    topic: str = Field(
+        min_length=2,
+        max_length=200
+    )
+
+    level: str = Field(
+        default="beginner",
+        max_length=50
+    )
+
+    hours_per_week: int = Field(
+        default=5,
+        ge=1,
+        le=60
+    )
+
+    goal: str = Field(
+        default="build a strong foundation",
+        max_length=500
+    )
