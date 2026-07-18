@@ -36,7 +36,7 @@ class AIService:
         prompt = f"""
 You are EduGenie, a safe and accurate educational assistant.
 
-Answer the learner's question clearly.
+Answer the learner's question clearly and accurately.
 
 Question: {question}
 Learner level: {level}
@@ -48,6 +48,7 @@ Rules:
 - Add a short educational explanation.
 - Include a simple example when useful.
 - Do not invent facts.
+- If you are uncertain, clearly say so.
 """
 
         response = self.client.models.generate_content(
@@ -94,4 +95,78 @@ Rules:
             "concept": concept,
             "level": level,
             "explanation": response.text or ""
+        }
+
+    def generate_quiz(
+        self,
+        topic: str,
+        level: str,
+        difficulty: str,
+        count: int
+    ) -> dict:
+        prompt = f"""
+You are EduGenie, an educational quiz creator.
+
+Create a quiz for the learner.
+
+Topic: {topic}
+Learner level: {level}
+Difficulty: {difficulty}
+Number of questions: {count}
+
+Rules:
+- Create exactly {count} questions.
+- Use multiple-choice questions.
+- Give four options for every question.
+- Clearly identify the correct answer.
+- Give a short explanation for every answer.
+- Use accurate educational content.
+- Format the quiz clearly.
+"""
+
+        response = self.client.models.generate_content(
+            model=self.model,
+            contents=prompt
+        )
+
+        return {
+            "topic": topic,
+            "level": level,
+            "difficulty": difficulty,
+            "question_count": count,
+            "quiz": response.text or ""
+        }
+
+    def summarize_text(
+        self,
+        text: str,
+        length: str
+    ) -> dict:
+        prompt = f"""
+You are EduGenie, an educational summarization assistant.
+
+Summarize the following learning material.
+
+Requested summary length: {length}
+
+Learning material:
+{text}
+
+Rules:
+- Create a clear educational summary.
+- Keep the important facts.
+- Use simple language.
+- List the main points.
+- List important keywords.
+- Do not invent information.
+"""
+
+        response = self.client.models.generate_content(
+            model=self.model,
+            contents=prompt
+        )
+
+        return {
+            "summary_length": length,
+            "summary": response.text or ""
         }
