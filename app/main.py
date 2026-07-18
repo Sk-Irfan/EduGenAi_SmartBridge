@@ -1,4 +1,8 @@
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from .ai_service import AIService
 from .schemas import (
@@ -10,10 +14,21 @@ from .schemas import (
 )
 
 
+ROOT_DIR = Path(__file__).resolve().parent.parent
+STATIC_DIR = ROOT_DIR / "static"
+
+
 app = FastAPI(
     title="EduGenie API",
     description="Google Gemini powered educational assistant",
     version="1.0.0"
+)
+
+
+app.mount(
+    "/static",
+    StaticFiles(directory=str(STATIC_DIR)),
+    name="static"
 )
 
 
@@ -26,9 +41,7 @@ except Exception as error:
 
 @app.get("/")
 def home():
-    return {
-        "message": "EduGenie backend is running"
-    }
+    return FileResponse(STATIC_DIR / "index.html")
 
 
 @app.get("/api/health")

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduGenie Learning Assistant</title>
+
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div>
+            <h1>EduGenie</h1>
+            <p>Google Gemini Powered Learning Assistant</p>
+        </div>
+
+        <a
+            class="docs-link"
+            href="/docs"
+            target="_blank"
+        >
+            API Docs
+        </a>
+    </header>
+
+    <main class="container">
+
+        <section class="hero card">
+            <div>
+                <span class="badge">Education</span>
+                <span class="badge">Generative AI</span>
+            </div>
+
+            <h2>Learn clearly. Practice intelligently.</h2>
+
+            <p>
+                EduGenie helps students, self-learners, and educators
+                understand concepts, generate quizzes, summarize study
+                material, and create personalized learning roadmaps.
+            </p>
+        </section>
+
+        <section class="feature-grid">
+
+            <!-- Ask Question -->
+            <article class="card">
+                <h2>Ask a Question</h2>
+
+                <form id="ask-form">
+                    <label for="question">
+                        Your question
+                    </label>
+
+                    <textarea
+                        id="question"
+                        placeholder="Which is the largest ocean?"
+                        required
+                    ></textarea>
+
+                    <label for="ask-level">
+                        Learning level
+                    </label>
+
+                    <select id="ask-level">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        id="subject"
+                        placeholder="Geography"
+                    >
+
+                    <button type="submit">
+                        Ask EduGenie
+                    </button>
+                </form>
+
+                <pre id="ask-result" class="result"></pre>
+            </article>
+
+            <!-- Explain Concept -->
+            <article class="card">
+                <h2>Explain a Concept</h2>
+
+                <form id="explain-form">
+                    <label for="concept">
+                        Concept
+                    </label>
+
+                    <input
+                        id="concept"
+                        placeholder="Pythagoras Theorem"
+                        required
+                    >
+
+                    <label for="explain-level">
+                        Learning level
+                    </label>
+
+                    <select id="explain-level">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+
+                    <label for="style">
+                        Explanation style
+                    </label>
+
+                    <input
+                        id="style"
+                        value="simple explanation with an example"
+                    >
+
+                    <button type="submit">
+                        Explain Concept
+                    </button>
+                </form>
+
+                <pre id="explain-result" class="result"></pre>
+            </article>
+
+            <!-- Quiz -->
+            <article class="card">
+                <h2>Generate a Quiz</h2>
+
+                <form id="quiz-form">
+                    <label for="quiz-topic">
+                        Topic
+                    </label>
+
+                    <input
+                        id="quiz-topic"
+                        placeholder="Pythagoras Theorem"
+                        required
+                    >
+
+                    <label for="quiz-level">
+                        Learning level
+                    </label>
+
+                    <select id="quiz-level">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+
+                    <label for="difficulty">
+                        Difficulty
+                    </label>
+
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+
+                    <label for="question-count">
+                        Number of questions
+                    </label>
+
+                    <select id="question-count">
+                        <option value="3">3</option>
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                    </select>
+
+                    <button type="submit">
+                        Generate Quiz
+                    </button>
+                </form>
+
+                <pre id="quiz-result" class="result"></pre>
+            </article>
+
+            <!-- Summarize -->
+            <article class="card">
+                <h2>Summarize Material</h2>
+
+                <form id="summary-form">
+                    <label for="summary-text">
+                        Learning material
+                    </label>
+
+                    <textarea
+                        id="summary-text"
+                        placeholder="Paste at least 50 characters of study material..."
+                        required
+                    ></textarea>
+
+                    <label for="summary-length">
+                        Summary length
+                    </label>
+
+                    <select id="summary-length">
+                        <option value="short">Short</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="long">Long</option>
+                    </select>
+
+                    <button type="submit">
+                        Summarize Material
+                    </button>
+                </form>
+
+                <pre id="summary-result" class="result"></pre>
+            </article>
+
+            <!-- Roadmap -->
+            <article class="card">
+                <h2>Create Learning Roadmap</h2>
+
+                <form id="roadmap-form">
+                    <label for="roadmap-topic">
+                        Learning topic
+                    </label>
+
+                    <input
+                        id="roadmap-topic"
+                        placeholder="SQL"
+                        required
+                    >
+
+                    <label for="roadmap-level">
+                        Current level
+                    </label>
+
+                    <select id="roadmap-level">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+
+                    <label for="hours-per-week">
+                        Study hours per week
+                    </label>
+
+                    <input
+                        id="hours-per-week"
+                        type="number"
+                        min="1"
+                        max="60"
+                        value="5"
+                        required
+                    >
+
+                    <label for="learning-goal">
+                        Learning goal
+                    </label>
+
+                    <input
+                        id="learning-goal"
+                        placeholder="Become job-ready"
+                        required
+                    >
+
+                    <button type="submit">
+                        Create Roadmap
+                    </button>
+                </form>
+
+                <pre id="roadmap-result" class="result"></pre>
+            </article>
+
+        </section>
+
+    </main>
+
+    <script src="/static/app.js"></script>
+
+</body>
+</html>
