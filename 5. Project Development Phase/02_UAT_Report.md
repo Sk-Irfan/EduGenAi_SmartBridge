@@ -5,38 +5,33 @@
 | Item | Details |
 |---|---|
 | Project | EduGenie Google Gemini Powered Learning Assistant |
-| Tester | Add tester name |
-| Date | Add test date |
-| Environment | Windows development laptop |
-| Version | 1.0.0 |
+| Tester | Shaik Irfan |
+| Environment | Windows 10/11 development laptop |
+| Python Version | Python 3.11.9 |
+| Backend | FastAPI |
+| AI Provider | Google Gemini |
+| Test Date | 19 July 2026 |
 
 ## Test Results
 
-| Test ID | Expected Result | Actual Result | Status | Comments |
-|---|---|---|---|---|
-| UAT-01 | Homepage is displayed | Add result | Pending |  |
-| UAT-02 | Health status is OK | Add result | Pending |  |
-| UAT-03 | Largest ocean answer is returned | Add result | Pending |  |
-| UAT-04 | Concept is explained | Add result | Pending |  |
-| UAT-05 | Quiz is generated | Add result | Pending |  |
-| UAT-06 | Text is summarized | Add result | Pending |  |
-| UAT-07 | Roadmap is generated | Add result | Pending |  |
-| UAT-08 | Empty input is rejected | Add result | Pending |  |
-| UAT-09 | Short summary is rejected | Add result | Pending |  |
-| UAT-10 | Mobile layout works | Add result | Pending |  |
-| UAT-11 | Swagger page opens | Add result | Pending |  |
-| UAT-12 | Provider error is handled | Add result | Pending |  |
-
-## Issues Found
-
-| Issue ID | Description | Severity | Resolution |
+| Test ID | Test Scenario | Actual Result | Status |
 |---|---|---|---|
-| ISSUE-01 | Add issue after testing | Low/Medium/High | Add solution |
-| ISSUE-02 | Add issue after testing | Low/Medium/High | Add solution |
+| UAT-01 | Open homepage | EduGenie homepage loaded successfully | PASS |
+| UAT-02 | Check health endpoint | Endpoint returned HTTP 200 | PASS |
+| UAT-03 | Ask which is the largest ocean | Response identified the Pacific Ocean | PASS |
+| UAT-04 | Explain Pythagoras Theorem | Concept explanation was generated | PASS |
+| UAT-05 | Generate a quiz | Gemini returned a free-tier quota error | BLOCKED BY QUOTA |
+| UAT-06 | Summarize learning material | Test after Gemini quota resets | PENDING |
+| UAT-07 | Create SQL learning roadmap | Test after Gemini quota resets | PENDING |
+| UAT-08 | Submit an empty question | Input validation rejects invalid input | PASS |
+| UAT-09 | Submit short summary text | Input validation rejects short text | PASS |
+| UAT-10 | Open homepage on smaller screen | Responsive layout should be verified | PENDING |
+| UAT-11 | Open Swagger API documentation | Swagger page opened successfully | PASS |
+| UAT-12 | Handle Gemini provider error | Backend returned a controlled error response | PASS |
 
-## Final Result
+## Automated Test Results
 
-Total tests:
+The schema validation tests were executed using Pytest.
 
 ```text
-12
+6 tests passed in 7.02 seconds
