@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 .env
 .venv/
-__pycache__/
-*.pyc
-.pytest_cache/
+=======
+.env
+.venv/
+.venvpy/
+>>>>>>> feature/edugenie-development
