@@ -1,34 +1,26 @@
- # EduGenie Google Gemini Powered Learning Assistant
+# EduGenie Google Gemini Powered Learning Assistant
 
-EduGenie is a lightweight AI-powered educational assistant designed to simplify and improve the learning experience through Generative AI.
+EduGenie is a lightweight AI-powered educational assistant built with FastAPI, HTML, CSS, JavaScript, and Google Gemini.
 
-The application helps students, self-learners, and educators:
-
-- Ask educational questions
-- Understand difficult concepts
-- Generate quizzes
-- Summarize learning material
-- Create personalized learning roadmaps
-
-EduGenie is built using FastAPI, HTML, CSS, JavaScript, and Google Gemini.
+It helps students, self-learners, and educators understand concepts, answer questions, generate quizzes, summarize learning material, and create personalized learning roadmaps.
 
 ---
 
 ## Project Overview
 
-Learning can become difficult when:
+Learning can become difficult when educational explanations are too complex, study material is lengthy, or learners do not know what to study next.
 
-- Educational explanations are too complex.
-- Study material is too lengthy.
-- Learners do not have enough practice questions.
-- Students do not know what to study next.
-- Educators spend too much time preparing learning content.
+EduGenie provides multiple educational features through one simple web application:
 
-EduGenie combines multiple educational features in one simple web application.
+- Intelligent question answering
+- Simplified concept explanation
+- AI-powered quiz generation
+- Educational text summarization
+- Personalized learning roadmaps
 
 ---
 
-## Main Features
+## Features
 
 ### 1. Intelligent Question Answering
 
