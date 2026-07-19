@@ -28,3 +28,6 @@ Users can ask questions such as:
 
 ```text
 Which is the largest ocean?
+## Demo Video
+
+[Watch the EduGenie Demonstration Video]https://drive.google.com/file/d/1NwHulSvc1Dg9hV32ypa2d69Dhk5TsgXJ/view?usp=drive_link
