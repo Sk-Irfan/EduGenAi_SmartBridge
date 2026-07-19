@@ -1,0 +1,8 @@
+[
+  "tests/test_schemas.py::test_empty_question_is_rejected",
+  "tests/test_schemas.py::test_quiz_count_limit",
+  "tests/test_schemas.py::test_summary_text_minimum_length",
+  "tests/test_schemas.py::test_valid_explanation_request",
+  "tests/test_schemas.py::test_valid_question_request",
+  "tests/test_schemas.py::test_valid_roadmap_request"
+]
